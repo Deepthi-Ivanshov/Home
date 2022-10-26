@@ -1,33 +1,46 @@
-import "./signIn.css";
-import { Link ,useNavigate} from "react-router-dom";
-import { useState } from "react";
+import './signIn.css'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const SignIn = () => {
-  const [pin, setPin] = useState<Boolean>(false);
-  const navigate = useNavigate();
+  const [pin, setPin] = useState<Boolean>(false)
+  const navigate = useNavigate()
   const togglePin = () => {
-    setPin(!pin);
-  };
+    setPin(!pin)
+  }
 
   const submitHandler = (e: any) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const mobile = e.target.mobile.value;
-    const mPin = e.target.mPin.value;
+    const mobile = e.target.mobile.value
+    const mPin = e.target.mPin.value
 
-    const userData = JSON.parse(localStorage.getItem("users") || "[]");
+    const newArr: any[] = []
+    const userData = JSON.parse(localStorage.getItem('users') || '[]')
     userData.map((user: any) => {
-      if (mobile === user.mobile) {
-        if (mPin === user.mPin) {
-          // alert("userfound");
-          navigate("/dashBoard");
-        }
+      // if (mobile === user.mobile) {
+
+      //   if (mPin === user.mPin) {
+      //     navigate("/dashBoard");
+      //   }
+
+      //  }else{
+      //   alert("enter proper values...")
+      //  }
+
+      if (mobile === user.mobile && mPin === user.mPin) {
+        newArr.push('exists')
       }
-    });
-  };
+    })
+    if (newArr.includes('exists')) {
+      navigate('/dashBoard')
+    } else {
+      alert('please signUp to Login...')
+    }
+  }
   return (
     <div>
-      {" "}
+      {' '}
       <div className="leftContainer">
         <div className="signInText">SIGN IN TO YOUR ACCOUNT</div>
         <form className="formContainer" onSubmit={submitHandler}>
@@ -44,7 +57,7 @@ const SignIn = () => {
           </div>
           <div className="passwordPin">
             <input
-              type={pin ? "text" : "password"}
+              type={pin ? 'text' : 'password'}
               placeholder="MPin"
               className="inputField"
               required
@@ -53,7 +66,7 @@ const SignIn = () => {
               name="mPin"
             />
             <img
-              src={require("../../assets/icons/eye_on.png")}
+              src={require('../../assets/icons/eye_on.png')}
               alt="img"
               className="eyeIcon"
               onClick={togglePin}
@@ -62,7 +75,7 @@ const SignIn = () => {
           <div className="forgotPassword">Forgot your password?</div>
           <button className="signInButton">SIGN IN</button>
           <div className="createAccount">
-            Don’t have a Account?{" "}
+            Don’t have a Account?{' '}
             <span>
               &nbsp;
               <Link to="/register" className="linkButton">
@@ -73,7 +86,7 @@ const SignIn = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignIn;
+export default SignIn

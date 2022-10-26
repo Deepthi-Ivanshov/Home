@@ -1,67 +1,67 @@
-import "./signUp.css";
-import { useNavigate} from "react-router-dom";
-import {useState} from "react";
+import './signUp.css'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const SignUp = () => {
-  const navigate = useNavigate();
-  const [togglePin, setTogglePin] = useState<Boolean>(false);
-  const onToggleChange=()=>{
-    setTogglePin(!togglePin);
+  const navigate = useNavigate()
+  const [togglePin, setTogglePin] = useState<Boolean>(false)
+  const onToggleChange = () => {
+    setTogglePin(!togglePin)
   }
 
-  const [toggleMPin, setToggleMPin] = useState<Boolean>(false);
-  const onToggleMPinChange=()=>{
-    setToggleMPin(!toggleMPin);
+  const [toggleMPin, setToggleMPin] = useState<Boolean>(false)
+  const onToggleMPinChange = () => {
+    setToggleMPin(!toggleMPin)
   }
 
-  const storeUsers = localStorage.getItem("users") || "[]";
+  const storeUsers = localStorage.getItem('users') || '[]'
   //   if (storeUsers === "[]") {
   //   localStorage.setItem(
   //     "users",
   //     JSON.stringify([{ mobile: "2345678909", pin: "1111", mPin: "1111" }])
   //   );
   //   }
-  console.log("storeUsers", storeUsers);
+  console.log('storeUsers', storeUsers)
 
   const signUpHandler = (event: any) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const mobile = event.target.mobile.value;
-    const pin = event.target.pin.value;
-    const mPin = event.target.mPin.value;
+    const mobile = event.target.mobile.value
+    const pin = event.target.pin.value
+    const mPin = event.target.mPin.value
 
     const userData = {
       mobile,
       pin,
       mPin,
-    };
+    }
 
-    const previousData = JSON.parse(localStorage.getItem("users") || "[]");
+    const previousData = JSON.parse(localStorage.getItem('users') || '[]')
 
-    const arr: any[] = [];
+    const arr: any[] = []
 
     previousData.map((user: any) => {
       if (userData.mobile === user.mobile) {
-        arr.push("exist");
+        arr.push('exist')
       }
-    });
+    })
 
-    if (arr.includes("exist")) {
-      alert("user already exist");
+    if (arr.includes('exist')) {
+      alert('user already exist')
     } else {
-      if (mobile === "" && pin === "" && mPin === "") {
-        alert("enter all fields");
+      if (mobile === '' && pin === '' && mPin === '') {
+        alert('enter all fields')
       } else {
         if (pin === mPin) {
-          previousData.push(userData);
-          localStorage.setItem("users", JSON.stringify(previousData));
-          navigate("/");
+          previousData.push(userData)
+          localStorage.setItem('users', JSON.stringify(previousData))
+          navigate('/')
         } else {
-          alert("enter same pins");
+          alert('enter same pins')
         }
       }
     }
-  };
+  }
 
   return (
     <div>
@@ -81,7 +81,7 @@ const SignUp = () => {
           </div>
           <div className="passwordPin_1">
             <input
-              type={togglePin?"text":"password"}
+              type={togglePin ? 'text' : 'password'}
               placeholder="Enter 4 digit Pin"
               className="inputField_1"
               required
@@ -90,7 +90,7 @@ const SignUp = () => {
               name="pin"
             />
             <img
-              src={require("../../assets/icons/eye_on.png")}
+              src={require('../../assets/icons/eye_on.png')}
               alt="img"
               className="eyeIcon_1"
               onClick={onToggleChange}
@@ -98,7 +98,7 @@ const SignUp = () => {
           </div>
           <div className="passwordPin_1">
             <input
-              type={toggleMPin?"text":"password"}
+              type={toggleMPin ? 'text' : 'password'}
               placeholder="Re Enter 4 digit Pin"
               className="inputField_1"
               required
@@ -108,7 +108,7 @@ const SignUp = () => {
               // onClick={togglePin}
             />
             <img
-              src={require("../../assets/icons/eye_on.png")}
+              src={require('../../assets/icons/eye_on.png')}
               alt="img"
               className="eyeIcon_1"
               onClick={onToggleMPinChange}
@@ -118,7 +118,7 @@ const SignUp = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp
