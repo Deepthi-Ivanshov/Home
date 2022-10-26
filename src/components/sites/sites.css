@@ -2,7 +2,6 @@
   position: absolute;
   top: 7.5rem;
   left: 12rem;
-  /* background-color: #e46363; */
   right: 5.5rem;
   bottom: 0rem;
 }
@@ -67,7 +66,6 @@
   display: flex;
   justify-content: center;
   margin-top: 10rem;
-  /* height: 106%; */
 }
 .addSites {
   color: #3c4857;
@@ -86,7 +84,6 @@
   justify-content: center;
   border-radius: 10rem;
   width: 79%;
-  /* height: 100%; */
 }
 
 .media {
@@ -118,7 +115,6 @@
 }
 
 .card {
-  /* background-color: rgb(217, 165, 165); */
   margin-top: 1rem;
 }
 
@@ -126,11 +122,6 @@
 
 .modal {
   width: 68vw;
-  /* height: 100vh;
-  top: 11.5%;
-  right: 12.6%;
-  bottom: 0;
-  position: fixed; */
   top: 78px;
   left: 10rem;
   right: 5.5rem;
@@ -140,26 +131,20 @@
 
 .overlay {
   background: rgba(49, 49, 49, 0.8);
-  /* position: absolute; */
-  /* width: 77vw; */
-  /* height: 87vh; */
   top: 78px;
   left: 10rem;
   right: 5.5rem;
   bottom: 0;
   position: fixed;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 .modalContent {
-  /* position: absolute; */
   background-color: white;
-  /* top: 3rem; */
   left: 41px;
   right: 1px;
-  /* margin: 14rem; */
+  margin: 1rem 8rem;
   padding: 2rem;
+  border-radius: 10px;
+  position: relative;
 }
 
 .modelInfo {
@@ -167,4 +152,16 @@
   height: 100vh;
   justify-content: center;
   align-items: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: -23px;
+  right: -31px;
+  background: transparent;
+  border: transparent;
+  /* width: 4px; */
+}
+.closeImg {
+  width: 3rem;
 }
